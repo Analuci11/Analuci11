@@ -1,8 +1,9 @@
-name: Deploy
+name: Deploy to Azure
   on:
     push:
       branches:
         - main
+
   jobs:
     deploy:
       runs-on: ubuntu-latest
@@ -14,6 +15,7 @@ name: Deploy
           uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
+
         - name: Build and deploy Container App
           uses: azure/container-apps-deploy-action@v1
           with:
